@@ -1,0 +1,29 @@
+table {
+  width: 100%;
+  padding: 1.5rem;
+  padding-right: 3rem;
+}
+
+.mat-header-cell {
+  font-weight: bold;
+  text-align: left;
+}
+.container_button {
+  position: fixed;
+  bottom: 5rem;
+  right: 0.5rem;
+  z-index: 1000;
+}
+
+button[mat-fab] {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+button[mat-fab]:hover {
+  transform: scale(1.5);
+}
+.mat-cell,
+.mat-header-cell {
+  padding: 8px;
+}

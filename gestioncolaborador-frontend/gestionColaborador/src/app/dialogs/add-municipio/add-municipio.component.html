@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Agregar Municipio</h1>
+<div mat-dialog-content>
+  <form [formGroup]="municipioForm" (ngSubmit)="onSave()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Municipio</mat-label>
+      <input matInput formControlName="nombre_municipio" required />
+      <mat-error *ngIf="municipioForm.get('nombre_municipio')?.hasError('required')">Este campo es
+        requerido</mat-error>
+      <mat-error *ngIf="municipioForm.get('nombre_municipio')?.hasError('maxlength')">El nombre es demasiado
+        largo</mat-error>
+    </mat-form-field>
+
+
+  </form>
+</div>
+
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="municipioForm.invalid">Guardar</button>
+</div>

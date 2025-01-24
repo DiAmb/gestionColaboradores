@@ -1,0 +1,33 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item routerLink="/administrador/colaboradores" routerLinkActive="active">Colaboradores</a>
+      <a mat-list-item routerLink="/administrador/empresas">Empresas</a>
+      <a mat-list-item routerLink="/administrador/ubicacion">Ubicaciones</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"
+        *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <div class="user-info">
+        <span>Administrador</span>
+        <span class="user-name">{{ userName }}</span>
+      </div>
+
+      <div class="fab-container">
+        <button mat-fab color="accent" (click)="logout()">
+          <mat-icon>logout</mat-icon>
+        </button>
+      </div>
+
+
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

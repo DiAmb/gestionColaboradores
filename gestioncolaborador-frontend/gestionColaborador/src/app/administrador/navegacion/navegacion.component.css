@@ -1,0 +1,43 @@
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 200px;
+}
+
+.sidenav .mat-toolbar {
+  background: inherit;
+}
+
+.mat-toolbar.mat-primary {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+.fab-container {
+  position: fixed;
+  bottom: 1rem;
+  right: 0.5rem;
+  z-index: 1000;
+}
+
+button[mat-fab] {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease-in-out;
+}
+
+button[mat-fab]:hover {
+  transform: scale(1.5);
+}
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0.5rem 0;
+  width: 100%;
+}
+
+.user-name {
+  margin-right: 1.5rem;
+}

@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Editar Departamento</h1>
+<div mat-dialog-content>
+  <form [formGroup]="departamentoForm" (ngSubmit)="onSave()">
+    <mat-form-field appearance="fill">
+      <mat-label>Nombre del Departamento</mat-label>
+      <input matInput formControlName="nombre_departamento" required />
+      <mat-error *ngIf="departamentoForm.get('nombre_departamento')?.hasError('required')">Este campo es
+        requerido</mat-error>
+      <mat-error *ngIf="departamentoForm.get('nombre_departamento')?.hasError('maxlength')">El nombre es demasiado
+        largo</mat-error>
+    </mat-form-field>
+
+
+  </form>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancelar</button>
+  <button mat-button color="primary" (click)="onSave()" [disabled]="departamentoForm.invalid">Guardar</button>
+</div>

@@ -1,0 +1,31 @@
+<div class="page">
+  <mat-card>
+    <mat-card-header>
+      <h2>Sistema de gestión de colaboradores</h2>
+    </mat-card-header>
+    <mat-card-content>
+      <form #loginForm="ngForm" (submit)="login()">
+        <h4 class="card-title">Acceso</h4>
+        <mat-error *ngIf="!loginValid">
+          El correo y contraseña no son correctos!.
+        </mat-error>
+        <mat-form-field>
+          <mat-label>Correo</mat-label>
+          <input matInput type="email" placeholder="mail" [(ngModel)]="mail" name="mail" required />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" placeholder="Contraseña" [(ngModel)]="password" name="password" required />
+        </mat-form-field>
+        <button mat-raised-button color="primary" [disabled]="!loginForm.valid">
+          Login
+        </button>
+      </form>
+    </mat-card-content>
+  </mat-card>
+
+  <footer>
+    Copyright © {{ year }}
+    <a href="https://www.linkedin.com/in/diego-ambrocio/" target="_blank" title="Linkedin Diego">Diego Ambrocio</a>
+  </footer>
+</div>
