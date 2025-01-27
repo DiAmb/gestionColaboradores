@@ -1,0 +1,48 @@
+h1.mat-dialog-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.mat-dialog-content {
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+mat-form-field {
+  width: 100%;
+}
+
+.mat-dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+button[type="submit"] {
+  background-color: #3f51b5;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+button[type="submit"]:disabled {
+  background-color: #cccccc;
+}
+
+button[mat-dialog-close] {
+  color: #f44336;
+}
+
+mat-form-field input {
+  padding: 8px;
+  font-size: 1rem;
+}
+
+.container__dialog {
+  border-radius: 150px;
+}

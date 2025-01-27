@@ -33,6 +33,15 @@
         <input matInput formControlName="correo_electronico_colaborador" type="email" required />
       </mat-form-field>
 
+      <mat-form-field>
+        <mat-label>Empresas</mat-label>
+        <mat-select formControlName="empresas" multiple>
+          <mat-option *ngFor="let empresa of empresas" [value]="empresa.id_empresa">
+            {{ empresa.nombre_comercial_empresa }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
       <div mat-dialog-actions>
         <button mat-button mat-dialog-close>Cancelar</button>
         <button mat-button color="primary" type="submit" [disabled]="!colaboradorForm.valid">Guardar</button>

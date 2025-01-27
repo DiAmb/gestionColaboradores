@@ -2,6 +2,7 @@ import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { ColaboradoresService } from 'src/app/servicios/colaboradores/colaboradores.service';
+import { EmpresasService } from 'src/app/servicios/empresas/empresas.service';
 
 @Component({
   selector: 'app-edit-colaborador',
@@ -10,11 +11,13 @@ import { ColaboradoresService } from 'src/app/servicios/colaboradores/colaborado
 })
 export class EditColaboradorComponent {
   colaboradorForm: FormGroup;
+  empresas: any[] = [];
 
   constructor(
     private fb: FormBuilder,
     private colaboradoresService: ColaboradoresService,
     private dialogRef: MatDialogRef<EditColaboradorComponent>,
+    private empresasService: EmpresasService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
     const fechaNacimiento = this.formatDate(data.fecha_nacimiento_colaborador);
@@ -32,7 +35,23 @@ export class EditColaboradorComponent {
         data.correo_electronico_colaborador,
         [Validators.required, Validators.email],
       ],
+      empresas: [
+        data.empresas.map(
+          (empresa: { id_empresa: string }) => empresa.id_empresa
+        ),
+      ],
     });
+    this.loadEmpresas();
+  }
+  loadEmpresas() {
+    this.empresasService.getAll().subscribe(
+      (empresas) => {
+        this.empresas = empresas;
+      },
+      (error) => {
+        console.error('Error al cargar las empresas', error);
+      }
+    );
   }
 
   onSubmit() {
@@ -63,6 +82,6 @@ export class EditColaboradorComponent {
   }
   formatDate(date: string): string {
     const newDate = new Date(date);
-    return newDate.toISOString().split('T')[0]; // Convierte a 'YYYY-MM-DD'
+    return newDate.toISOString().split('T')[0];
   }
 }

@@ -1,1 +1,89 @@
-<p>add-empresa works!</p>
+<div class="container__dialog">
+  <h1 mat-dialog-title>Registro de Empresa</h1>
+  <div mat-dialog-content>
+    <form [formGroup]="empresaForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="fill">
+        <mat-label>Razón Social</mat-label>
+        <input matInput formControlName="razon_social_empresa" required />
+        <mat-error *ngIf="empresaForm.get('razon_social_empresa')?.hasError('required')">
+          La razón social es obligatoria.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Nombre Comercial</mat-label>
+        <input matInput formControlName="nombre_comercial_empresa" required />
+        <mat-error *ngIf="empresaForm.get('nombre_comercial_empresa')?.hasError('required')">
+          El nombre comercial es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>NIT</mat-label>
+        <input matInput formControlName="nit_empresa" required />
+        <mat-error *ngIf="empresaForm.get('nit_empresa')?.hasError('required')">
+          El NIT es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Teléfono</mat-label>
+        <input matInput formControlName="telefono_empresa" required />
+        <mat-error *ngIf="empresaForm.get('telefono_empresa')?.hasError('required')">
+          El teléfono es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Correo Electrónico</mat-label>
+        <input matInput formControlName="correo_electronico_empresa" type="email" required />
+        <mat-error *ngIf="empresaForm.get('correo_electronico_empresa')?.hasError('required')">
+          El correo electrónico es obligatorio.
+        </mat-error>
+        <mat-error *ngIf="empresaForm.get('correo_electronico_empresa')?.hasError('email')">
+          El formato del correo electrónico no es válido.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="mb-4">
+        <mat-label>País</mat-label>
+        <mat-select formControlName="id_pais" required>
+          <mat-option value="" disabled>Seleccione un país</mat-option>
+          <mat-option *ngFor="let pais of paises" [value]="pais.id_pais">{{ pais.nombre_pais }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="empresaForm.get('id_pais')?.hasError('required')">
+          El país es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="mb-4">
+        <mat-label>Departamento</mat-label>
+        <mat-select formControlName="id_departamento" required>
+          <mat-option value="" disabled>Seleccione un departamento</mat-option>
+          <mat-option *ngFor="let depto of departamentos" [value]="depto.id_departamento">{{ depto.nombre_departamento
+            }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="empresaForm.get('id_departamento')?.hasError('required')">
+          El departamento es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill" class="mb-4">
+        <mat-label>Municipio</mat-label>
+        <mat-select formControlName="id_municipio" required>
+          <mat-option value="" disabled>Seleccione un municipio</mat-option>
+          <mat-option *ngFor="let municipio of municipios" [value]="municipio.id_municipio">{{
+            municipio.nombre_municipio }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="empresaForm.get('id_municipio')?.hasError('required')">
+          El municipio es obligatorio.
+        </mat-error>
+      </mat-form-field>
+
+      <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Cancelar</button>
+        <button mat-button color="primary" type="submit" [disabled]="empresaForm.invalid">Guardar</button>
+      </div>
+    </form>
+  </div>
+</div>

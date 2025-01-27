@@ -130,7 +130,13 @@ export default function () {
       }
 
       if (empresas) {
-        await db.remove(TABLE_RELATION, { id_colaborador: id });
+        const existingRelations = await db.getAll(
+          TABLE_RELATION,
+          `WHERE id_colaborador = ${id}`
+        );
+        if (existingRelations.length > 0) {
+          await db.remove(TABLE_RELATION, { id_colaborador: id });
+        }
         if (empresas.length > 0) {
           const relations = empresas.map((id_empresa) => ({
             id_colaborador: id,
